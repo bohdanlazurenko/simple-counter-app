@@ -1,8 +1,13 @@
 'use client'
 
 import { useState } from 'react'
+import { cn } from '@/lib/utils'
 
-export default function Counter() {
+interface CounterProps {
+  className?: string
+}
+
+export function Counter({ className }: CounterProps) {
   const [count, setCount] = useState(0)
 
   const increment = () => setCount(count + 1)
@@ -10,29 +15,34 @@ export default function Counter() {
   const reset = () => setCount(0)
 
   return (
-    <div className="bg-white rounded-lg shadow-lg p-8">
-      <div className="text-center mb-6">
-        <h2 className="text-2xl font-semibold text-gray-700 mb-2">Counter</h2>
-        <p className="text-5xl font-bold text-blue-600">{count}</p>
+    <div className={cn('flex flex-col items-center space-y-6', className)}>
+      <div className="text-6xl font-bold text-gray-800 dark:text-gray-200">
+        {count}
       </div>
-      <div className="flex gap-4 justify-center">
+      
+      <div className="flex space-x-4">
         <button
           onClick={decrement}
-          className="px-6 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors font-medium"
+          className="px-6 py-3 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors font-semibold"
+          aria-label="Decrement counter"
         >
-          Decrement
+          -
         </button>
+        
         <button
           onClick={reset}
-          className="px-6 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors font-medium"
+          className="px-6 py-3 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors font-semibold"
+          aria-label="Reset counter"
         >
           Reset
         </button>
+        
         <button
           onClick={increment}
-          className="px-6 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors font-medium"
+          className="px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors font-semibold"
+          aria-label="Increment counter"
         >
-          Increment
+          +
         </button>
       </div>
     </div>

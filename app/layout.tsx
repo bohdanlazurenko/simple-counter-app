@@ -3,7 +3,7 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: 'Simple Counter App',
-  description: 'A simple counter application built with Next.js and TypeScript',
+  description: 'A clean and simple counter application',
 }
 
 export default function RootLayout({
